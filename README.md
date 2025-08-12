@@ -20,7 +20,7 @@ Create a new folder `honeykey`.
 
 Move into directory.
 
-`cd honey`
+`cd honeykey`
 
 An RSA key must be generated for the SSH server host key. The SSH host key provides proper identification for the SSH server. Ensure the key is titled `server.key` and resides in the same relative directory to the main program.
 
@@ -41,8 +41,6 @@ HONEYPY requires a bind IP address (`-a`) and network port to listen on (`-p`). 
 Example: `python3 honeypy.py -a 0.0.0.0 -p 22 --ssh`
 
 💡 If HONEPY is set up to listen on a privileged port (22), the program must be run with `sudo` or root privileges. No other services should be using the specified port. 
-
-If port 22 is being used as the listener, the default SSH port must be changed. Refer to Hostinger's "[How to Change the SSH Port](https://www.hostinger.com/tutorials/how-to-change-ssh-port-vps)" guide.
 
 ❗ To run with `sudo`, the `root` account must have access to all Python libraries used in this project (libraries defined in `requirements.txt`). Install by switching to the root account, then supply:
 
@@ -97,11 +95,3 @@ The web-based honeypot runs on port 5000 by default. This can be changed using t
 HONEYPY comes packaged with a `web_honeypot.py` file. This can be run in a seperate terminal session on localhost to view statistics such as top 10 IP addresses, usernames, passwords, commands, and all data in tabular format. As of right now, the dashboards do not dynamically update as new entries or information are added to the log files. The dashboard must be run every time to re-populate to the most up-to-date information.
 
 Run `python3 web_honeypot.py` on localhost. Default port for Python Dash is `8050`. `http://127.0.0.1:8050`. Go to your browser of choice to view dashboard metrics.
-
-💡 The dashboard data includes a country code lookup that uses the IP address to determine the two-digit country code. To get the IP address, the [ipinfo() CleanTalk API](https://cleantalk.org/help/api-ip-info-country-code) is used. Due to rate limiting contraints, CleanTalk can only lookup 1000 IP addresses per 60 seconds. 
-- By default, the country code lookup is set to `False`, as this will have impact on how long it takes to provision the honeypot (pandas has to pivot on dataframes, which takes time). Set the `COUNTRY` environment variable to `True` if you would like to get the country code lookup dashboard panel.
-- If receiving rate limiting errors, change the `COUNTRY` environment variable in `public.env` to `False` again. 
-
-HONEPY leverages Python Dash to populate the bar charts, Dash Bootstrap Components for dark-theme and style of charts, and Pandas for data parsing.
-
-<img src="/assets/images/Dashboard.PNG" alt="Dashboard" width="600"/>

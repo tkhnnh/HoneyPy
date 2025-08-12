@@ -83,7 +83,7 @@ The project started out with only supported SSH. Use the following instructions 
 ## HTTP
 Using Python Flask as a basic template to provision a simple web service, HONEYPY impersonates a default WordPress `wp-admin` login page. Username / password pairs are collected.
 
-There are default credentials accepted, `admin` and `deeboodah`, which will proceed to a Rick Roll gif. Username and password can be changed using the `-u / --username: Username.
+There are default credentials accepted, `admin`. Username and password can be changed using the `-u / --username: Username.
 -w / --password: Password` arguments.
 
 The web-based honeypot runs on port 5000 by default. This can be changed using the `-p / --port` flag option.
